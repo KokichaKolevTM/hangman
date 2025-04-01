@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hangman</title>
+    <link rel="shortcut icon" href="icon.png">
+    <link rel="stylesheet" href="styles.css">
+    <script src="dictionary.js"></script>
+    <script src="main.js" defer></script>
+</head>
+
+<body>
+    <div id="settings">
+        <div id="game-description">
+            <div id="header">Welcome to the Hangman game!</div>
+            <p>In this game, you'll guess the <b>names of various cities and villages</b> from the provided
+                countries. Choose your
+                difficulty level and country, and see how many you can guess correctly! You have <b>only 6 lives</b>
+                each game!</p>
+        </div>
+        <fieldset id="difficulty-setting" class="setting">
+            <legend>Choose difficulty</legend>
+            <label>
+                <input type="radio" name="difficulty" id="easy">
+                <span>Easy</span>
+            </label>
+            <label>
+                <input type="radio" name="difficulty" id="medium" checked>
+                <span>Medium</span>
+            </label>
+            <label>
+                <input type="radio" name="difficulty" id="hard">
+                <span>Hard</span>
+            </label>
+        </fieldset>
+        <fieldset id="country-setting" class="setting">
+            <legend>Choose country</legend>
+            <label>
+                <input type="radio" name="country" id="gb" checked>
+                <span>United Kingdom</span>
+            </label>
+            <label>
+                <input type="radio" name="country" id="bg">
+                <span>Bulgaria</span>
+            </label>
+        </fieldset>
+        <button type="button" id="start-game">Start Game!</button>
+    </div>
+    <div id="game" style="display: none;">
+        <div id="title">Hangman</div>
+        <div id="guess-progress"></div>
+        <div id="wrong-letters"></div>
+        <img id="hangman-canvas" src="images/hangman-0.svg"></img>
+        <input type="text" id="input-guess" maxlength="1">
+        <div id="overlay" style="display: none;">
+            <div id="overlay-message"></div>
+            <button type="button" id="start-again">Start again</button>
+        </div>
+    </div>
+</body>
+
+</html>

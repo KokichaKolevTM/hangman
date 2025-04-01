@@ -1,0 +1,174 @@
+body {
+    font-family: "Arial", sans-serif;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+/* settings */
+#settings {
+    display: flex;
+    flex-direction: column;
+    gap: 1.3rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.setting {
+    border: 2px solid #4caf50;
+    border-radius: 0.5rem;
+    padding: 0.9rem;
+    background-color: #f8f3f3;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-inline: 0.8rem;
+}
+
+.setting legend {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #4caf50;
+    padding: 0 0.625rem;
+}
+
+.setting label {
+    display: block;
+    margin: 0.8rem 0;
+    font-size: 1.1rem;
+    cursor: pointer;
+    user-select: none;
+}
+
+.setting input[type="radio"] {
+    margin-right: 0.45rem;
+    accent-color: #4caf50;
+}
+
+.setting input[type="radio"]:checked + span {
+    font-weight: bold;
+    color: #4caf50;
+}
+
+button {
+    font-weight: bold;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 0.3125rem;
+    padding: 0.625rem 1.25rem;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+    background-color: #45a049;
+    transform: scale(1.05);
+}
+
+button:active {
+    transform: scale(0.95);
+}
+
+/* game description */
+#game-description {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.4rem;
+    padding: 1.4rem;
+    background-color: #f8f3f3; /* Same background as settings */
+    border: 2px solid #4caf50; /* Same border color */
+    border-radius: 0.5rem; /* Same border radius */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Same shadow */
+    margin-inline: 1rem;
+    max-width: 32rem;
+}
+
+#game-description #header {
+    font-size: 1.7rem; /* Slightly larger font for the title */
+    font-weight: bold;
+    color: #4caf50; /* Same color as settings */
+    margin-block: 0.8rem;
+}
+
+#game-description p {
+    font-size: 1.1rem; /* Same font size as settings labels */
+    color: #333; /* Darker color for better readability */
+    margin: 0;
+    line-height: 1.4;
+}
+
+/* game */
+#game {
+    position: relative;
+    background-color: white;
+    border-radius: 0.625rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    padding: 1.25rem;
+    text-align: center;
+    width: 18.75rem;
+    margin-inline: 0.8rem;
+}
+
+#title {
+    font-size: 2rem;
+    color: #333;
+}
+
+#guess-progress {
+    font-size: 1.7rem;
+    letter-spacing: 0.6rem;
+    color: #555;
+    margin: 0.625rem 0;
+}
+
+#wrong-letters {
+    font-size: 1rem;
+    color: rgb(200, 0, 0);
+    margin: 0.625rem 0;
+    font-weight: bold;
+    height: 100%;
+}
+
+#hangman-canvas {
+    width: 100%;
+    height: auto;
+    margin: 0.9rem 0;
+}
+
+#input-guess {
+    width: 3.125rem;
+    padding: 0.625rem;
+    font-size: 1.4rem;
+    border: 2px solid #47a04a; /* #007bff */
+    border-radius: 0.3125rem;
+    outline: none;
+    transition: border-color 0.3s;
+    text-align: center;
+}
+
+#input-guess:focus {
+    border-color: #408042; /* #0056b3 */
+}
+
+/* overlay */
+#overlay {
+    position: absolute;
+    border-radius: 0.625rem;
+    background-color: rgba(0, 0, 0, 0.6);
+    inset: 0; /* top, bottom, right, left */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#overlay-message {
+    font-size: 2rem;
+    margin-bottom: 1.4rem;
+    font-weight: bold;
+}
