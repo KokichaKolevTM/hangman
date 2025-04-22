@@ -1,31 +1,32 @@
-const $ = (s) => document.querySelector(s);
+// todo:
+// - option for a hint
+// - statistics
+// 
 
-function getCheckedOptionID(options) {
-    for (const option of options) {
-        if (option.checked) {
-            return option.id;
-        }
-    }
-}
+const $ = (s) => document.querySelector(s);
 
 function getRandomNumber(maxNumber) {
     return Math.floor(Math.random() * maxNumber);
 }
 
-function drawHangman(wrongInputs) {
+function updateHangmanImage(wrongInputs) {
     if (wrongInputs.length <= 6) {
         $("#hangman-canvas").src = `images/hangman-${wrongInputs.length}.svg`;
     }
 }
 
-function showOverlay(gameWon) {
-    setTimeout(() => {
-        $("#start-again").focus();
-    }, 100);
+function showOverlay(isGameWon) {
+    $("#input-guess").blur();
+    $("#overlay").classList.remove("hidden");
+    $("#overlay-message").textContent = isGameWon ? "You won!" : "You lost!";
+    $("#overlay-message").style.color = isGameWon ? "greenyellow" : "red";
+}
 
-    $("#overlay").style.display = "flex";
-    $("#overlay-message").textContent = gameWon ? "You won!" : "You lossed!";
-    $("#overlay-message").style.color = gameWon ? "greenyellow" : "red";
+function increaseLocalStorage(key) {
+    localStorage.setItem(
+        key,
+        localStorage.getItem(key) ? parseInt(localStorage.getItem(key)) + 1 : 1
+    );
 }
 
 let choosenDifficulty = (choosenCountry = wordToGuess = "");
@@ -34,14 +35,15 @@ let wrongInputs = [];
 let numberOfLives = 6;
 
 $("#start-game").addEventListener("click", () => {
+    $("#input-guess").value = "";
     setTimeout(() => {
         $("#input-guess").focus();
-    }, 100);
+    }, 150);
 
-    $("#settings").style.display = "none";
-    $("#game").style.display = "block";
-    choosenDifficulty = getCheckedOptionID(document.getElementsByName("difficulty"));
-    choosenCountry = getCheckedOptionID(document.getElementsByName("country"));
+    $("#settings").classList.add("hidden");
+    $("#game").classList.remove("hidden");
+    choosenDifficulty = $("input[name='difficulty']:checked").id;
+    choosenCountry = $("input[name='country']:checked").id;
 
     let words;
     switch (choosenCountry) {
@@ -86,18 +88,20 @@ $("#input-guess").addEventListener("keydown", (event) => {
 
             if (!guessProgress.includes("_")) {
                 showOverlay(true);
+                increaseLocalStorage("win_count");
             }
         } else {
-            wrongInputs.push($("#input-guess").value);
+            wrongInputs.push($("#input-guess").value.toLowerCase());
             $("#wrong-letters").textContent = `Wrong Letters: ${Array.from(
                 new Set(wrongInputs)
             ).join(", ")}`;
             numberOfLives--;
-            drawHangman(wrongInputs);
+            updateHangmanImage(wrongInputs);
 
             if (numberOfLives === 0) {
                 $("#guess-progress").textContent = wordToGuess;
                 showOverlay(false);
+                increaseLocalStorage("loss_count");
             }
         }
         $("#input-guess").value = "";
@@ -106,15 +110,19 @@ $("#input-guess").addEventListener("keydown", (event) => {
 
 $("#input-guess").addEventListener("input", () => {
     let regex;
-    switch (getCheckedOptionID(document.getElementsByName("country"))) {
+    switch ($("input[name='country']:checked").id) {
         case "bg":
-            regex = /[^а-я]/i
+            regex = /[^а-я]/i;
             break;
         case "gb":
             regex = /[^a-z]/i;
             break;
     }
     $("#input-guess").value = $("#input-guess").value.replace(regex, "");
+
+    if ($("#input-guess").value.length > 1) {
+        $("#input-guess").value = $("#input-guess").value[0];
+    }
 });
 
 $("#start-again").addEventListener("click", () => {
@@ -122,10 +130,10 @@ $("#start-again").addEventListener("click", () => {
     foundLetters = new Set([]);
     wrongInputs = [];
 
-    $("#game").style.display = "none";
-    $("#overlay").style.display = "none";
-    $("#settings").style.display = "flex";
+    $("#game").classList.add("hidden");
+    $("#overlay").classList.add("hidden");
+    $("#settings").classList.remove("hidden");
     $("#wrong-letters").textContent = "";
     $("#input-guess").value = "";
-    drawHangman(wrongInputs);
+    updateHangmanImage(wrongInputs);
 });

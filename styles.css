@@ -1,6 +1,14 @@
+:root {
+    /* color-scheme: light dark; */
+}
+
+.hidden {
+    display: none !important;
+}
+
 body {
     font-family: "Arial", sans-serif;
-    background-color: #f0f0f0;
+    background-color: light-dark(#f0f0f0, #474646);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -18,10 +26,10 @@ body {
 }
 
 .setting {
-    border: 2px solid #4caf50;
+    border: 2px solid light-dark(#4caf50, #3b8a3b);
     border-radius: 0.5rem;
     padding: 0.9rem;
-    background-color: #f8f3f3;
+    background-color: light-dark(#f8f3f3, #3a3a3a);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     margin-inline: 0.8rem;
 }
@@ -29,7 +37,7 @@ body {
 .setting legend {
     font-size: 1.3rem;
     font-weight: bold;
-    color: #4caf50;
+    color: light-dark(#4caf50, #3b8a3b);
     padding: 0 0.625rem;
 }
 
@@ -43,18 +51,18 @@ body {
 
 .setting input[type="radio"] {
     margin-right: 0.45rem;
-    accent-color: #4caf50;
+    accent-color: light-dark(#4caf50, #3b8a3b);
 }
 
 .setting input[type="radio"]:checked + span {
     font-weight: bold;
-    color: #4caf50;
+    color: light-dark(#4caf50, #3b8a3b);
 }
 
 button {
     font-weight: bold;
-    background-color: #4caf50;
-    color: white;
+    background-color: light-dark(#4caf50, #3b8a3b);
+    color: light-dark(white, #292828);
     border: none;
     border-radius: 0.3125rem;
     padding: 0.625rem 1.25rem;
@@ -64,7 +72,7 @@ button {
 }
 
 button:hover {
-    background-color: #45a049;
+    background-color: light-dark(#45a049, #3b8a3b);
     transform: scale(1.05);
 }
 
@@ -80,8 +88,8 @@ button:active {
     text-align: center;
     gap: 0.4rem;
     padding: 1.4rem;
-    background-color: #f8f3f3; /* Same background as settings */
-    border: 2px solid #4caf50; /* Same border color */
+    background-color: light-dark(#f8f3f3, #3a3a3a); /* Same background as settings */
+    border: 2px solid light-dark(#4caf50, #3b8a3b); /* Same border color */
     border-radius: 0.5rem; /* Same border radius */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Same shadow */
     margin-inline: 1rem;
@@ -91,13 +99,13 @@ button:active {
 #game-description #header {
     font-size: 1.7rem; /* Slightly larger font for the title */
     font-weight: bold;
-    color: #4caf50; /* Same color as settings */
+    color: light-dark(#4caf50, #3b8a3b); /* Same color as settings */
     margin-block: 0.8rem;
 }
 
 #game-description p {
     font-size: 1.1rem; /* Same font size as settings labels */
-    color: #333; /* Darker color for better readability */
+    color: light-dark(#333, #ccc); /* Darker color for better readability */
     margin: 0;
     line-height: 1.4;
 }
@@ -105,7 +113,7 @@ button:active {
 /* game */
 #game {
     position: relative;
-    background-color: white;
+    background-color: light-dark(white, #292828);
     border-radius: 0.625rem;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
     padding: 1.25rem;
@@ -116,19 +124,19 @@ button:active {
 
 #title {
     font-size: 2rem;
-    color: #333;
+    color: light-dark(#333, #ccc);
 }
 
 #guess-progress {
     font-size: 1.7rem;
     letter-spacing: 0.6rem;
-    color: #555;
+    color: light-dark(#555, #222);
     margin: 0.625rem 0;
 }
 
 #wrong-letters {
     font-size: 1rem;
-    color: rgb(200, 0, 0);
+    color: light-dark(rgb(200, 0, 0), rgb(100, 0, 0));
     margin: 0.625rem 0;
     font-weight: bold;
     height: 100%;
@@ -144,7 +152,7 @@ button:active {
     width: 3.125rem;
     padding: 0.625rem;
     font-size: 1.4rem;
-    border: 2px solid #47a04a; /* #007bff */
+    border: 2px solid light-dark(#47a04a, #2e6b2e);
     border-radius: 0.3125rem;
     outline: none;
     transition: border-color 0.3s;
@@ -152,7 +160,7 @@ button:active {
 }
 
 #input-guess:focus {
-    border-color: #408042; /* #0056b3 */
+    border-color: light-dark(#408042, #2a5a2a);
 }
 
 /* overlay */

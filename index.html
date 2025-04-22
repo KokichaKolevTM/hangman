@@ -38,23 +38,23 @@
         <fieldset id="country-setting" class="setting">
             <legend>Choose country</legend>
             <label>
-                <input type="radio" name="country" id="gb" checked>
-                <span>United Kingdom</span>
+                <input type="radio" name="country" id="bg" checked>
+                <span>Bulgaria</span>
             </label>
             <label>
-                <input type="radio" name="country" id="bg">
-                <span>Bulgaria</span>
+                <input type="radio" name="country" id="gb">
+                <span>United Kingdom</span>
             </label>
         </fieldset>
         <button type="button" id="start-game">Start Game!</button>
     </div>
-    <div id="game" style="display: none;">
+    <div id="game" class="hidden">
         <div id="title">Hangman</div>
         <div id="guess-progress"></div>
         <div id="wrong-letters"></div>
         <img id="hangman-canvas" src="images/hangman-0.svg"></img>
-        <input type="text" id="input-guess" maxlength="1">
-        <div id="overlay" style="display: none;">
+        <input type="text" id="input-guess">
+        <div id="overlay" class="hidden">
             <div id="overlay-message"></div>
             <button type="button" id="start-again">Start again</button>
         </div>
